@@ -13,6 +13,7 @@
 //! `encode_str` and `decode_to_string` provide convenience wrappers
 //! that convert from and to Rust’s UTF-8 based `str` and `String` types.
 
+use std::prelude::v1::*;
 use std::char;
 use std::u32;
 

@@ -1,5 +1,8 @@
-use std::fmt::{self, Write};
-use std::str::FromStr;
+use core::fmt::{self, Write};
+use core::str::FromStr;
+use alloc::string::String;
+use alloc::vec::Vec;
+use alloc::borrow::ToOwned;
 
 /// <https://mimesniff.spec.whatwg.org/#mime-type-representation>
 #[derive(Debug, PartialEq, Eq)]
@@ -116,7 +119,7 @@ fn contains(parameters: &[(String, String)], name: &str) -> bool {
 fn valid_value(s: &str) -> bool {
     s.chars().all(|c| {
         // <https://mimesniff.spec.whatwg.org/#http-quoted-string-token-code-point>
-        matches!(c, '\t' | ' '...'~' | '\u{80}'...'\u{FF}')
+        matches!(c, '\t' | ' '..='~' | '\u{80}'..='\u{FF}')
     }) && !s.is_empty()
 }
 

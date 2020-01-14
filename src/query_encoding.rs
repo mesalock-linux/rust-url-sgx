@@ -6,6 +6,7 @@
 // option. This file may not be copied, modified, or distributed
 // except according to those terms.
 
+use std::prelude::v1::*;
 use std::borrow::Cow;
 
 pub type EncodingOverride<'a> = Option<&'a dyn Fn(&str) -> Cow<[u8]>>;

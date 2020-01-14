@@ -11,6 +11,7 @@
 
 use self::Mapping::*;
 use punycode;
+use std::prelude::v1::*;
 use std::cmp::Ordering::{Equal, Greater, Less};
 use unicode_bidi::{bidi_class, BidiClass};
 use unicode_normalization::char::is_combining_mark;

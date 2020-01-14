@@ -6,6 +6,7 @@
 // option. This file may not be copied, modified, or distributed
 // except according to those terms.
 
+use std::prelude::v1::*;
 use parser::{self, to_u32, SchemeType};
 use std::str;
 use Url;

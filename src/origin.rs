@@ -6,6 +6,7 @@
 // option. This file may not be copied, modified, or distributed
 // except according to those terms.
 
+use std::prelude::v1::*;
 use host::Host;
 use idna::domain_to_unicode;
 use parser::default_port;

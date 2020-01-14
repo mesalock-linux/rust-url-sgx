@@ -37,10 +37,16 @@
 //! assert_eq!(utf8_percent_encode("foo <bar>", FRAGMENT).to_string(), "foo%20%3Cbar%3E");
 //! ```
 
-use std::borrow::Cow;
-use std::fmt;
-use std::slice;
-use std::str;
+#![no_std]
+
+extern crate alloc;
+
+use alloc::borrow::{Cow, ToOwned};
+use alloc::string::String;
+use alloc::vec::Vec;
+use core::fmt;
+use core::slice;
+use core::str;
 
 /// Represents a set of characters or bytes in the ASCII range.
 ///
@@ -63,7 +69,7 @@ type Chunk = u32;
 
 const ASCII_RANGE_LEN: usize = 0x80;
 
-const BITS_PER_CHUNK: usize = 8 * std::mem::size_of::<Chunk>();
+const BITS_PER_CHUNK: usize = 8 * core::mem::size_of::<Chunk>();
 
 impl AsciiSet {
     /// Called with UTF-8 bytes rather than code points.
@@ -109,7 +115,7 @@ macro_rules! static_assert {
     ($( $bool: expr, )+) => {
         fn _static_assert() {
             $(
-                let _ = std::mem::transmute::<[u8; $bool as usize], u8>;
+                let _ = core::mem::transmute::<[u8; $bool as usize], u8>;
             )+
         }
     }

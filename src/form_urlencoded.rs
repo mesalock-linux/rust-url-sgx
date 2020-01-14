@@ -13,6 +13,7 @@
 //! Converts between a string (such as an URL’s query string)
 //! and a sequence of (name, value) pairs.
 
+use std::prelude::v1::*;
 use percent_encoding::{percent_decode, percent_encode_byte};
 use query_encoding::{self, decode_utf8_lossy, EncodingOverride};
 use std::borrow::{Borrow, Cow};

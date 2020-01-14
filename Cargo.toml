@@ -31,17 +31,22 @@ harness = false
 test = false
 
 [dev-dependencies]
-rustc-test = "0.3"
-serde_json = "1.0"
+#rustc-test = "0.3"
+#serde_json = "1.0"
 
 bencher = "0.1"
 
 [dependencies]
 idna = { version = "0.2.0", path = "./idna" }
-matches = "0.1"
+matches = { git = "https://github.com/mesalock-linux/rust-std-candidates-sgx" }
 percent-encoding = { version = "2.1.0", path = "./percent_encoding" }
-serde = {version = "1.0", optional = true, features = ["derive"]}
+serde = { git = "https://github.com/mesalock-linux/serde-sgx", version = "1.0", optional = true, features = ["derive"]}
+sgx_tstd = { rev = "v1.1.0", git = "https://github.com/apache/teaclave-sgx-sdk.git", optional = true }
 
 [[bench]]
 name = "parse_url"
 harness = false
+
+[features]
+default = ["mesalock_sgx"]
+mesalock_sgx = ["sgx_tstd"]
