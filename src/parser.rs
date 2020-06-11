@@ -1171,6 +1171,10 @@ impl<'a> Parser<'a> {
             // The query and path states will be handled by the caller.
             return input;
         }
+
+        if maybe_c != None && maybe_c != Some('/') {
+            self.serialization.push('/');
+        }
         // Otherwise, if c is not the EOF code point:
         self.parse_path(scheme_type, has_host, path_start, input)
     }
@@ -1294,6 +1298,7 @@ impl<'a> Parser<'a> {
             self.serialization.push('/');
             self.serialization.push_str(&path.trim_start_matches("/"));
         }
+
         input
     }
 
